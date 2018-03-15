@@ -1,0 +1,39 @@
+<h2>Add position to the menu</h2>
+<%= simple_form_for (@menu) , url: admin_menus_path, :method => :post do |f| %>
+  <h5>Dish name</h5>
+
+  <div class= "form_group">
+    <%= f.text_field :dish%>
+  </div>
+
+  <h5>Price</h5>
+  <div class= "form_group">
+    <%= f.text_field :price%>
+  </div>
+
+  <h5>Photo</h5>
+  <div class= "form_group">
+    <%= f.file_field :image %>
+    <h6>Photo URL</h6>
+    <%= f.text_field :remote_image_url %>
+  </div>
+
+  <div class= "form_group">
+    <%= f.input :first, as: :boolean %>
+  </div>
+
+  <div class= "form_group">
+    <%= f.input :main, as: :boolean %>
+  </div>
+
+  <div class= "form_group">
+    <%= f.input :drink, as: :boolean %>
+  </div>
+
+    <%= f.hidden_field :weekday,:value => params[:id]  %>
+  <div class= "form_group">
+    <%= f.button :submit, 'Add', class: 'btn btn-primary' %>
+    <%= link_to 'Back', :back, class: 'btn btn-outline-secondary'%>
+  </div>
+
+<%end%>

@@ -1,0 +1,37 @@
+<h1><%= params[:id]%> menu</h1>
+<% if current_user.admin? and  Date.today.strftime("%A")==params[:id]%>
+  <%= link_to "Add position",new_admin_menu_path(id: params[:id]), class: 'btn btn-primary'%>
+<%end%>
+<h3>First course</h3>
+<% if current_user.admin?%>
+  <h3><%=link_to 'Main course',dashboard_main_course_path(id: params[:id])%></h3>
+  <h3><%=link_to 'Drink',dashboard_drink_path(id: params[:id])%></h3>
+<%end%>
+<% @menu.where(weekday: params[:id], first: true).each do |menu|%>
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th scope="col">Dish</th>
+      <th scope="col">Price</th>
+      <th scope="col">Photo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%=link_to menu.dish,dashboard_addfirst_path(first: menu.id, weekday: params[:id],  price: menu.price)%></td>
+      <td><%=menu.price%> RUB</td>
+      <%if menu.image?%>
+        <td><%= image_tag menu.image.url(:super_small), class:'image-index' if menu.image?%></td>
+      <%else%>
+        <td> Absent</td>
+      <%end%>
+    </tr>
+    </tbody>
+  </table>
+  <% if current_user.admin?%>
+    <%= link_to "Delete position",admin_menu_path(menu), method: :delete, class: 'btn btn-primary' %>
+    <%= link_to "Edit position",edit_admin_menu_path(menu), class: 'btn btn-primary'%>
+  <%end%>
+  <br>
+  <br>
+<%end%>

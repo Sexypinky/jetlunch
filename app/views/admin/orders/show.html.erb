@@ -1,0 +1,56 @@
+<h3><%= @order.user.email%></h3>
+  <% tprice=0%>
+  <% Menu.where(id: @order.first).each do |first|%>
+    <table class="table table-sm">
+      <thead>
+      <tr>
+        <th scope="col">Dish</th>
+        <th scope="col">Price</th>
+        <th scope="col">Photo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%=first.dish%></td>
+        <td><%=first.price%> руб</td>
+        <%tprice=first.price+tprice%>
+        <%if first.image?%>
+          <td><%= image_tag first.image.url(:super_small), class:'image-index' if first.image? %></td>
+        <%else%>
+          <td> Absent</td>
+        <%end%>
+      </tr>
+  <%end%>
+
+  <% Menu.where(id: @order.main).each do |main|%>
+    <tr>
+      <td><%=main.dish%></td>
+      <td><%=main.price%> руб</td>
+      <%tprice=main.price+tprice%>
+      <%if main.image?%>
+        <td><%= image_tag main.image.url(:super_small), class:'image-index' if main.image? %></td>
+      <%else%>
+        <td> Absent</td>
+      <%end%>
+    </tr>
+  <%end%>
+
+  <% Menu.where(id: @order.drink).each do |drink|%>
+    <tr>
+      <td><%=drink.dish%></td>
+      <td><%=drink.price%> руб</td>
+      <%tprice=drink.price+tprice%>
+      <%if drink.image?%>
+        <td><%= image_tag drink.image.url(:super_small), class:'image-index' if drink.image? %></td>
+      <%else%>
+        <td> Absent</td>
+      <%end%>
+    </tr>
+    <tr>
+      <td><h3><b>Total price</b></h3></td>
+      <td><h4><b><%=tprice%>руб</b></h4></td>
+    </tr>
+    </tbody>
+    </table>
+
+  <%end%>

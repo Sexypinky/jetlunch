@@ -1,0 +1,10 @@
+<div class="jumbotron">
+  <h1 class="display-3">JetLunch</h1>
+  <p class="lead">Those, who are late for breakfast, we invite for a cup of good Italian coffee with a hot cake or to take a replete buffet breakfast</p>
+  <hr class="my-4">
+  <%if not user_signed_in?%>
+    <p>To use our services, please register or sign in on the button below.</p>
+    <%= link_to 'Register',:new_user_registration, class: 'btn btn-primary btn-lg ' %>
+    <%= link_to 'Sign in',:new_user_session, class: 'btn btn-primary btn-lg ' %>
+  <%end%>
+</div>

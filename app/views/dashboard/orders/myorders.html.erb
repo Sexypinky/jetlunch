@@ -1,0 +1,58 @@
+<% if @orders.empty?  %>
+  <h2><b>No orders</b></h2>
+<% else %>
+<% @orders.each do |order|%>
+  <h3>My <%= order.weekday%> order </h3>
+  <% Menu.where(id: order.first).each do |first|%>
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th scope="col">Dish</th>
+      <th scope="col">Price</th>
+      <th scope="col">Photo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%=first.dish%></td>
+      <td><%=first.price%> RUB</td>
+      <%if first.image?%>
+        <td><%= image_tag first.image.url(:super_small), class:'image-index' if first.image? %></td>
+      <%else%>
+        <td> Absent</td>
+      <%end%>
+    </tr>
+<%end%>
+
+    <% Menu.where(id: order.main).each do |main|%>
+        <tr>
+          <td><%=main.dish%></td>
+          <td><%=main.price%> RUB</td>
+          <%if main.image?%>
+            <td><%= image_tag main.image.url(:super_small), class:'image-index' if main.image? %></td>
+          <%else%>
+            <td> Absent</td>
+          <%end%>
+        </tr>
+    <%end%>
+
+  <% Menu.where(id: order.drink).each do |drink|%>
+        <tr>
+          <td><%=drink.dish%></td>
+          <td><%=drink.price%> RUB</td>
+          <%if drink.image?%>
+            <td><%= image_tag drink.image.url(:super_small), class:'image-index' if drink.image? %></td>
+          <%else%>
+            <td> Absent</td>
+          <%end%>
+        </tr>
+    <tr>
+      <td><h3><b>Total price</b></h3></td>
+      <td><h4><b><%=order.total_price%>руб</b></h4></td>
+      <td><%= link_to "Cancel order",dashboard_order_path(order), method: :delete, class: 'btn btn-danger' %></td>
+    </tr>
+        </tbody>
+      </table>
+    <%end%>
+  <%end%>
+<%end%>
