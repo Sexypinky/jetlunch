@@ -1,0 +1,28 @@
+<h3>All <%=params[:id]%> orders</h3>
+<% if @orders.empty?  %>
+  <h2><b>No orders</b></h2>
+<% else %>
+<% tprice=0%>
+<table class="table table-sm">
+  <thead>
+  <tr>
+    <th scope="col">User</th>
+    <th scope="col">Total price</th>
+  </tr>
+  </thead>
+<% @orders.where(weekday: params[:id]).each do |order|%>
+    <tbody>
+    <tr>
+      <td><%=link_to order.user.email, admin_order_path(id: order.id)%></td>
+      <% tprice=order.total_price+tprice%>
+      <td><b><%=order.total_price%> RUB</b></td>
+    </tr>
+<%end%>
+      <tr>
+        <td><h3>The total cost of day</h3></td>
+        <td><h3><b><%=tprice%> RUB</b></h3></td>
+      </tr>
+      </tbody>
+</table>
+
+<%end%>
