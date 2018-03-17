@@ -1,6 +1,5 @@
 class Admin::MenusController < Admin::AdminController
 
-
   def new
     @menu=Menu.new
   end
