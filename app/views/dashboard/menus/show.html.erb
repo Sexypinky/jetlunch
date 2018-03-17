@@ -18,7 +18,11 @@
     </thead>
     <tbody>
     <tr>
+      <% if Date.today.strftime("%A") == params[:id]%>
       <td><%=link_to menu.dish,dashboard_addfirst_path(first: menu.id, weekday: params[:id],  price: menu.price)%></td>
+      <%else%>
+        <td><%=menu.dish%></td>
+      <%end%>
       <td><%=menu.price%> RUB</td>
       <%if menu.image?%>
         <td><%= image_tag menu.image.url(:super_small), class:'image-index' if menu.image?%></td>
