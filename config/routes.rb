@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :user
 
   root "static_pages#index"
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-      resources :orders
+    resources :orders
   end
 
 end

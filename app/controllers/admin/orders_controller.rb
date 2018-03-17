@@ -9,7 +9,6 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   def week
-
   end
 
 

@@ -1,5 +1,6 @@
 <h3><%= @order.user.email%></h3>
   <% tprice=0%>
+
   <% Menu.where(id: @order.first).each do |first|%>
     <table class="table table-sm">
       <thead>

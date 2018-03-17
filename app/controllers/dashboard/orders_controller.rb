@@ -40,6 +40,6 @@ class Dashboard::OrdersController < Dashboard::DashboardController
     @order=current_user.orders.new(drink: params[:drink], main: params[:main],first: params[:first],total_price: @total_price, weekday: params[:weekday])
     @order.save
     redirect_to dashboard_myorders_path, notice: "You'r ordered successfully"
-    end
+  end
 
 end
