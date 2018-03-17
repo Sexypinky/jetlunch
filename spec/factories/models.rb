@@ -7,7 +7,6 @@ FactoryBot.define do
     first true
     main false
     drink false
-    id 1
   end
 
   factory :user do
@@ -21,7 +20,7 @@ FactoryBot.define do
     first 1
     main 1
     drink 1
-    weekday
+    weekday "Wednesday"
     total_price 36
   end
 
