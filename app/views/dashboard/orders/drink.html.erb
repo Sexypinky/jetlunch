@@ -1,8 +1,5 @@
 <h1><%= params[:id]%> menu</h1>
 <h3>Drink</h3>
-<% if current_user.admin? and  Date.today.strftime("%A")==params[:id]%>
-  <%= link_to "Add position",new_admin_menu_path(id: params[:id]), class: 'btn btn-primary'%>
-<%end%>
 <% @menu.where(weekday: params[:id], drink: true).each do |menu|%>
   <table class="table table-sm">
     <thead>
