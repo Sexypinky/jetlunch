@@ -5,7 +5,7 @@ context "test" do
   let(:user) {create :user}
 
   before(:each) do
-    user.update(email: 'jetlunch@gmail.com', password: 'qwerty1234', admin: true)
+    user.update(email: 'jetlunch@gmail.com', password: 'qwerty1234')
     visit dashboard_pages_path
     fill_in "user_password", with: "qwerty1234"
     fill_in "user_email", with: "jetlunch@gmail.com"
@@ -28,7 +28,7 @@ context "test" do
     expect(page).to have_content "Position successfully created"
   end
 
-  it "right add position" do
+  it "right order" do
     click_on Date.today.strftime("%A")
     click_on "Add position"
     fill_in "menu_dish", with: "Fish"
