@@ -23,5 +23,6 @@ Things you may want to cover:
 
 * ...
 
-Travis Ci
-https://travis-ci.org/Sexypinky/jetlunch.svg?branch=master
+Travis CI
+[![Build Status](https://api.travis-ci.org/Sexypinky/jetlunch.png)](https://travis-ci.org/Sexypinky/jetlunch.svg?branch=master)
+
