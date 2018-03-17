@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Travis Ci
+https://travis-ci.org/Sexypinky/jetlunch.svg?branch=master
