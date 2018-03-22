@@ -25,9 +25,11 @@
         <a class="navbar-brand" href="/">JetLunch</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to 'Dashboard',dashboard_pages_path%></li>
-            <li><%= link_to "Account manage", edit_user_registration_path%></li>
-            <li><%= link_to "My orders",dashboard_myorders_path  %></li>
+            <% if user_signed_in?%>
+              <li><%= link_to 'Dashboard',dashboard_pages_path%></li>
+              <li><%= link_to "Account manage", edit_user_registration_path%></li>
+              <li><%= link_to "My orders",dashboard_myorders_path  %></li>
+            <%end%>
           </ul>
           <ul class="nav navbar-nav pull-right">
             <% if user_signed_in?%>
